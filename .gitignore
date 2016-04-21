@@ -1,0 +1,8 @@
+dist
+node_modules
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+sftp-config.json
+index.php
+.htaccess
