@@ -1,26 +1,40 @@
 {
   "name": "specla-autoloader",
-  "version": "0.0.0",
-  "description": "Autoloader",
+  "version": "0.0.2",
+  "description": "Autoloader module",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Specla/Autoloader.git"
   },
+  "files": [
+    "index.js",
+    "Readme.md",
+    "License.md",
+    "src/Autoloader.js"
+  ],
   "keywords": [
     "Specla",
     "Autoloader"
   ],
-  "author": "Frederik Kvartborg",
+  "author": [
+    {
+      "name": "Frederik Kvartborg Albertsen",
+      "url": "https://kvartborg.net"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Specla/Autoloader/issues"
   },
-  "homepage": "https://github.com/Specla/Autoloader#readme"
+  "homepage": "https://github.com/Specla/Autoloader#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
