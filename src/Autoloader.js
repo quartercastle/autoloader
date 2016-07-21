@@ -3,13 +3,11 @@ var fs = require('fs');
 
 class Autoloader {
 
-  constructor(rootdir){
-    this.rootdir = rootdir;
-    this.paths = undefined;
+  constructor(paths){
+    this.rootdir = process.cwd();
+    this.paths = paths;
     this.namespaces = {};
     this.setGlobal = false;
-
-    return this;
   }
 
 
@@ -22,17 +20,15 @@ class Autoloader {
   }
 
 
-  namespaced(paths){
-    this.paths = paths;
-
+  namespaced(){
     this.validatePaths();
     this.getFiles();
 
     return this.namespaces;
   }
 
-  global(paths){
-    this.paths = paths;
+
+  global(){
     this.setGlobal = true;
 
     this.validatePaths();

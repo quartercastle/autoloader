@@ -1,19 +1,18 @@
 # Specla autoloader
 
 ```js
-var Namespace = new Autoloader(__dirname).namespaced([
+var Namespace = new Autoloader([
   'controllers',
   'models',
-]);
+]).namespaced();
 
 console.log(Namespace); // will return namespaced object with exports
 ```
 
 ```js
 // load modules globally
-new Autoloader(__dirname).global([
+new Autoloader([
   'controllers',
   'models',
-]);
+]).global();
 ```
-
