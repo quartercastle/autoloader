@@ -1,8 +1,8 @@
 {
   "name": "specla-autoloader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Autoloader module",
-  "main": "index.js",
+  "main": "src/Autoloader.js",
   "directories": {
     "test": "test"
   },
