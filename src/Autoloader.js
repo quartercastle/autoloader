@@ -10,6 +10,10 @@ class Autoloader {
     this.setGlobal = false;
   }
 
+  setRootDir(path){
+    this.rootdir = path;
+    return this;
+  }
 
   validatePaths(){
     for(var i = 0, path; path = this.paths[i]; i++){
