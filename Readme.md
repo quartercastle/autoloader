@@ -1,18 +1,15 @@
-# Specla autoloader
+# Specla Autoloader
 
-```js
-var Namespace = new Autoloader([
-  'controllers',
-  'models',
-]).namespaced();
+This is an autoloader for nodejs.
 
-console.log(Namespace); // will return namespaced object with exports
+### Install
+```sh
+npm install --save specla-autoloader
 ```
 
+### Usages
 ```js
-// load modules globally
-new Autoloader([
-  'controllers',
-  'models',
-]).global();
+const Autoloader = require('specla-autoloader')
+
+const { modules } = new Autoloader(__dirname)
 ```

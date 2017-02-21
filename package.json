@@ -1,13 +1,16 @@
 {
   "name": "specla-autoloader",
-  "version": "0.0.5",
-  "description": "Autoloader module",
-  "main": "src/Autoloader.js",
+  "version": "0.0.4",
+  "description": "Autoload modules in nodejs",
+  "main": "lib/Autoloader.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/index.js"
+    "test": "npm run lint && mocha --recursive test",
+    "test:watch": "mocha --watch --recursive",
+    "lint": "standard | snazzy",
+    "lint:fix": "standard --fix | snazzy"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,7 @@
   },
   "homepage": "https://github.com/Specla/Autoloader#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.1",
     "jshint": "^2.9.2",
