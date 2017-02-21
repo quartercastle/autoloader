@@ -17,13 +17,13 @@
     "url": "git+https://github.com/Specla/Autoloader.git"
   },
   "files": [
-    "index.js",
-    "Readme.md",
-    "License.md",
-    "src/Autoloader.js"
+    "README.md",
+    "LICENSE",
+    "lib/"
   ],
   "keywords": [
     "Specla",
+    "Modules",
     "Autoloader"
   ],
   "author": [
