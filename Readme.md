@@ -17,5 +17,8 @@ npm install --save specla-autoloader
 ```js
 const Autoloader = require('specla-autoloader')
 
-const { modules } = new Autoloader(__dirname)
+const { modules } = new Autoloader('./api/controllers', {
+  ignore: ['node_modules'],
+  include: ['js', 'json']
+})
 ```
