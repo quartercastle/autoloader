@@ -22,7 +22,7 @@ const Autoloader = require('specla-autoloader')
 const { modules } = new Autoloader(__dirname)
 ```
 
-#### Options
+### Options
 ```js
 const { modules } = new Autoloader(__dirname, {
   include: ['js', 'json'], // specifies which file types to include
