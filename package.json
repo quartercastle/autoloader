@@ -1,7 +1,7 @@
 {
   "name": "specla-autoloader",
   "version": "0.0.4",
-  "description": "Autoload modules in nodejs",
+  "description": "Autoloader for Node.js modules",
   "main": "lib/Autoloader.js",
   "directories": {
     "test": "test"
