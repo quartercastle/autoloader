@@ -24,7 +24,8 @@
   "keywords": [
     "Specla",
     "Modules",
-    "Autoloader"
+    "Autoloader",
+    "json"
   ],
   "author": [
     {
