@@ -23,6 +23,26 @@ const Autoloader = require('specla-autoloader')
 const modules = new Autoloader(path.resolve('./modules'))
 ```
 
+An example of the path `./modules` could look like this.
+```
+┬ modules
+├── some-file.js
+├── data.json
+├─┬ sub-modules
+  ├── other-file.js
+```
+
+This will create the following js object when the path is autoloaded.
+```js
+const modules = {
+  'some-file': require('./modules/some-file.js'),
+  data: require('./modules/data.json'),
+  'sub-modules': {
+    'other-file': require('./modules/sub-modules/other-file.js')
+  }
+}
+```
+
 ### Options
 ```js
 const modules = new Autoloader(__dirname, {
