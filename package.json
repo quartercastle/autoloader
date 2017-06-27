@@ -1,6 +1,6 @@
 {
   "name": "@specla/autoloader",
-  "version": "0.0.0",
+  "version": "1.0.0-0",
   "description": "Autoload modules and json files in Node.js",
   "main": "lib/Autoloader.js",
   "directories": {
