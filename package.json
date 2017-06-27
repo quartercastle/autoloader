@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run lint && mocha --recursive test",
+    "test": "npm run lint && nyc mocha --recursive test",
     "test:watch": "mocha --watch --recursive",
     "lint": "standard | snazzy",
     "lint:fix": "standard --fix | snazzy",
