@@ -26,8 +26,8 @@ describe('Autoloader', () => {
     const modules = new Autoloader(path.resolve(__dirname, './modules'), {
       ignore: ['submodules', 'file.js']
     })
-    expect(modules.submodules).to.be.undefined
-    expect(modules.file).to.be.undefined
+    expect(modules.submodules).to.be.equal(undefined)
+    expect(modules.file).to.be.equal(undefined)
   })
 
   it('Should only include json files', () => {
@@ -35,8 +35,8 @@ describe('Autoloader', () => {
       include: ['json']
     })
 
-    expect(modules.submodules.data.data).to.not.be.undefined
-    expect(modules.file).to.be.undefined
+    expect(modules.submodules.data.data).to.not.be.equal(undefined)
+    expect(modules.file).to.be.equal(undefined)
   })
 
   it(`Should throw an exception if the path doesn't exist`, () => {
