@@ -1,7 +1,7 @@
 {
-  "name": "specla-autoloader",
+  "name": "@specla/autoloader",
   "version": "1.0.0",
-  "description": "Autoloader for Node.js modules and json files",
+  "description": "Autoloader for modules and json files for Node.js",
   "main": "lib/Autoloader.js",
   "directories": {
     "test": "test"
@@ -10,7 +10,9 @@
     "test": "npm run lint && mocha --recursive test",
     "test:watch": "mocha --watch --recursive",
     "lint": "standard | snazzy",
-    "lint:fix": "standard --fix | snazzy"
+    "lint:fix": "standard --fix | snazzy",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm test"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,9 @@
   "homepage": "https://github.com/Specla/Autoloader#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.13.1",
     "mocha": "^3.2.0",
+    "nyc": "^11.0.3",
     "snazzy": "^6.0.0",
     "standard": "^8.6.0"
   }
