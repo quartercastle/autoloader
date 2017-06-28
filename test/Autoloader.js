@@ -3,14 +3,9 @@ const path = require('path')
 const { expect } = require('chai')
 const Autoloader = require('../lib/Autoloader')
 
-describe('Autoloader.constructor', () => {
-  it('Should create a new autoloader instance', () => {
-    const autoloader = new Autoloader(path.resolve(__dirname, './modules'))
-    expect(autoloader).to.be.instanceOf(Autoloader)
-  })
-
+describe('Autoloader', () => {
   it('Should include the correct folders and create a namespace module', () => {
-    const { modules } = new Autoloader(path.resolve(__dirname, './modules'))
+    const modules = new Autoloader(path.resolve(__dirname, './modules'))
     expect(modules).to.be.deep.equal({
       'other-modules': {
         test: ['other module']
@@ -28,20 +23,20 @@ describe('Autoloader.constructor', () => {
   })
 
   it('Should ignore the folder submodules and file.js', () => {
-    const { modules } = new Autoloader(path.resolve(__dirname, './modules'), {
+    const modules = new Autoloader(path.resolve(__dirname, './modules'), {
       ignore: ['submodules', 'file.js']
     })
-    expect(modules.submodules).to.be.undefined
-    expect(modules.file).to.be.undefined
+    expect(modules.submodules).to.be.equal(undefined)
+    expect(modules.file).to.be.equal(undefined)
   })
 
   it('Should only include json files', () => {
-    const { modules } = new Autoloader(path.resolve(__dirname, './modules'), {
+    const modules = new Autoloader(path.resolve(__dirname, './modules'), {
       include: ['json']
     })
 
-    expect(modules.submodules.data.data).to.not.be.undefined
-    expect(modules.file).to.be.undefined
+    expect(modules.submodules.data.data).to.not.be.equal(undefined)
+    expect(modules.file).to.be.equal(undefined)
   })
 
   it(`Should throw an exception if the path doesn't exist`, () => {
