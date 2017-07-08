@@ -18,7 +18,7 @@ npm install --save @specla/autoloader
 ### Usage
 ```js
 const path = require('path')
-const Autoloader = require('specla-autoloader')
+const Autoloader = require('@specla/autoloader')
 
 const modules = new Autoloader(path.resolve('./modules'))
 ```
