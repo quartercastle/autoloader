@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should include the correct folders and create a namespace module 1`] = `
+Object {
+  "file": Object {
+    "key": "value",
+  },
+  "other-modules": Object {
+    "test": Array [
+      "other module",
+    ],
+  },
+  "submodules": Object {
+    "data": Object {
+      "data": Object {
+        "samples": Array [
+          "test",
+          "hello",
+        ],
+      },
+    },
+    "module": true,
+  },
+}
+`;
+
+exports[`Should throw an exception if the path doesn't exist 1`] = `"Couldn't find the path ./does-not-exist"`;
+
+exports[`Should throw an exection if the first argument isn't a string 1`] = `"First argument should be a path"`;
