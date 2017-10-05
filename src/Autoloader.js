@@ -12,6 +12,7 @@ module.exports = class Autoloader {
     this.basePath = path
     this.modules = {}
 
+    this.flatten = options.flatten || false
     this.ignore = options.ignore || ['node_modules']
     this.include = options.include || ['json', 'js']
 

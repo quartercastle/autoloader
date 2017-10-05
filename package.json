@@ -1,51 +1,59 @@
 {
   "name": "@specla/autoloader",
+  "description": "Autoload JavaScript or JSON files",
   "version": "1.0.0",
-  "description": "Autoload modules and json files in Node.js",
-  "main": "lib/Autoloader.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "npm run lint && nyc mocha --recursive test",
-    "test:watch": "mocha --watch --recursive",
-    "lint": "standard | snazzy",
-    "lint:fix": "standard --fix | snazzy",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "prepublish": "npm test"
+  "license": "MIT",
+  "keywords": [
+    "specla",
+    "autoloader"
+  ],
+  "author": {
+    "name": "Frederik Kvarborg Albertsen",
+    "email": "hello@kvartborg.net",
+    "url": "https://kvartborg.net"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Specla/Autoloader.git"
+    "url": "git+https://github.com/specla/autoloader.git"
   },
-  "files": [
-    "README.md",
-    "LICENSE",
-    "lib/"
-  ],
-  "keywords": [
-    "Specla",
-    "Modules",
-    "Autoloader",
-    "json"
-  ],
-  "author": [
-    {
-      "name": "Frederik Kvartborg Albertsen",
-      "url": "https://kvartborg.net"
-    }
-  ],
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Specla/Autoloader/issues"
+    "url": "https://github.com/specla/autoloader/issues"
   },
-  "homepage": "https://github.com/Specla/Autoloader#readme",
+  "main": "lib/Autoloader.js",
+  "module": "src/Autoloader.js",
+  "files": [
+    "lib",
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "npm run lint && jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "standard | snazzy; exit 0",
+    "lint:fix": "standard --fix | snazzy; exit 0",
+    "build": "babel src/ -D -d ./lib; exit 0",
+    "build:watch": "babel src/ -D -d ./lib --watch",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "prepublish": "npm run build && npm test"
+  },
   "devDependencies": {
-    "chai": "^4.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.0.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "coveralls": "^2.13.1",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.3",
+    "jest": "^21.1.0",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
+    "standard": "^10.0.3"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["modules"]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
