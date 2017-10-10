@@ -1,15 +1,15 @@
 /* eslint-env jest */
 
 import path from 'path'
-import Autoloader from '../src/Autoloader'
+import autoloader from '../src/autoloader'
 
 test('Should include the correct folders and create a namespace module', () => {
-  const modules = new Autoloader(path.resolve(__dirname, './modules'))
+  const modules = autoloader(path.resolve(__dirname, './modules'))
   expect(modules).toMatchSnapshot()
 })
 
 test('Should ignore the folder submodules and file.js', () => {
-  const modules = new Autoloader(path.resolve(__dirname, './modules'), {
+  const modules = autoloader(path.resolve(__dirname, './modules'), {
     ignore: ['submodules', 'file.js']
   })
 
@@ -18,7 +18,7 @@ test('Should ignore the folder submodules and file.js', () => {
 })
 
 test('Should only include json files', () => {
-  const modules = new Autoloader(path.resolve(__dirname, './modules'), {
+  const modules = autoloader(path.resolve(__dirname, './modules'), {
     include: ['json']
   })
 
@@ -27,9 +27,9 @@ test('Should only include json files', () => {
 })
 
 test(`Should throw an exception if the path doesn't exist`, () => {
-  expect(() => new Autoloader('./does-not-exist')).toThrowErrorMatchingSnapshot()
+  expect(() => autoloader('./does-not-exist')).toThrowErrorMatchingSnapshot()
 })
 
 test(`Should throw an exection if the first argument isn't a string`, () => {
-  expect(() => new Autoloader({})).toThrowErrorMatchingSnapshot()
+  expect(() => autoloader({})).toThrowErrorMatchingSnapshot()
 })
