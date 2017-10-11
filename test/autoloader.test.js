@@ -29,8 +29,13 @@ test('Should only include json files', () => {
 test('Should work width ES module', () => {
   const modules = autoloader(path.resolve(__dirname, './modules'))
 
-  expect(modules.submodules.module.hello).toBe('world')
-  expect(modules.submodules.module).toMatchSnapshot()
+  expect(modules.submodules.esModule.hello).toBe('world')
+  expect(modules.submodules.esModule).toMatchSnapshot()
+})
+
+test('ES Module should export primitive', () => {
+  const modules = autoloader(path.resolve(__dirname, './modules'))
+  expect(modules.submodules.esModulePrimitive).toBe(true)
 })
 
 test(`Should throw an exception if the path doesn't exist`, () => {

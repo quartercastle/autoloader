@@ -19,7 +19,8 @@ Object {
         ],
       },
     },
-    "module": [Function],
+    "esModule": [Function],
+    "esModulePrimitive": true,
   },
 }
 `;

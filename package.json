@@ -51,7 +51,8 @@
     "standard": "^10.0.3"
   },
   "jest": {
-    "testPathIgnorePatterns": ["modules"]
+    "testPathIgnorePatterns": ["modules"],
+    "coveragePathIgnorePatterns": ["test"]
   },
   "publishConfig": {
     "access": "public"
