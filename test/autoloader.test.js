@@ -3,7 +3,7 @@
 import path from 'path'
 import autoloader from '../src/autoloader'
 
-test('Should include the correct folders and create a namespace module', () => {
+test('Should include the correct folders and create object which follows the folder structure', () => {
   const modules = autoloader(path.resolve(__dirname, './modules'))
   expect(modules).toMatchSnapshot()
 })
@@ -35,7 +35,7 @@ test('Should only include json files', () => {
   expect(modules.file).toBe(undefined)
 })
 
-test('Should work width ES module', () => {
+test('Should work with ES module', () => {
   const modules = autoloader(path.resolve(__dirname, './modules'))
 
   expect(modules.submodules.esModule.hello).toBe('world')
