@@ -17,6 +17,15 @@ test('Should ignore the folder submodules and file.js', () => {
   expect(modules.file).toBe(undefined)
 })
 
+test('Should ignore a path', () => {
+  const modules = autoloader(path.resolve(__dirname, './modules'), {
+    ignore: ['submodules/data', 'submodules/esModule.js']
+  })
+
+  expect(modules.submodules.data).toBe(undefined)
+  expect(modules.submodules.esModule).toBe(undefined)
+})
+
 test('Should only include json files', () => {
   const modules = autoloader(path.resolve(__dirname, './modules'), {
     include: ['json']

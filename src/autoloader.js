@@ -39,7 +39,10 @@ function createModuleObject (path, options) {
   const modules = {}
 
   for (const module of fs.readdirSync(path)) {
-    if (options.ignore.includes(module)) {
+    if (
+      options.ignore.includes(module) ||
+      ignorePath(join(path, module), options.ignore)
+    ) {
       // ignore files from the ignore option
       continue
     }
@@ -71,6 +74,19 @@ function createModuleObject (path, options) {
   }
 
   return modules
+}
+
+/**
+ * Test if a path should be ignored
+ * @param  {String}   path
+ * @param  {Array}    ignore
+ * @return {Boolean}
+ */
+function ignorePath (path, ignore) {
+  return ignore.reduce(
+    (state, ignorePath) => state || path.includes(ignorePath.replace('./', '')),
+    false
+  )
 }
 
 /**
