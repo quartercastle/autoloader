@@ -32,7 +32,7 @@ Array [
 ]
 `;
 
-exports[`Should throw an exception if the path doesn't exist 1`] = `"The path ./does-not-exist does not exists"`;
+exports[`Should throw an exception if the path doesn't exist 1`] = `"The path ./does-not-exist does not exist"`;
 
 exports[`Should throw an exection if the first argument isn't a string 1`] = `"First argument should be a string"`;
 

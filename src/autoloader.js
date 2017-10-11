@@ -23,7 +23,7 @@ export default function autoloader (path, options) {
   }
 
   if (!fs.existsSync(path)) {
-    throw new Error(`The path ${path} does not exists`)
+    throw new Error(`The path ${path} does not exist`)
   }
 
   return createModuleObject(path, Object.assign({}, defaultOptions, options))
