@@ -22,8 +22,15 @@ test('Should only include json files', () => {
     include: ['json']
   })
 
-  expect(!!modules.submodules.data.data).toBe(true)
+  expect(modules.submodules.data.data.samples).toMatchSnapshot()
   expect(modules.file).toBe(undefined)
+})
+
+test('Should work width ES module', () => {
+  const modules = autoloader(path.resolve(__dirname, './modules'))
+
+  expect(modules.submodules.module.hello).toBe('world')
+  expect(modules.submodules.module).toMatchSnapshot()
 })
 
 test(`Should throw an exception if the path doesn't exist`, () => {

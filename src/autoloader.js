@@ -24,7 +24,6 @@ export default function autoloader (path, options) {
 
   return createModuleObject(
     path,
-    {},
     Object.assign({}, defaultOptions, options)
   )
 }
@@ -32,12 +31,12 @@ export default function autoloader (path, options) {
 /**
  * Create the module object
  * @param  {String} path
- * @param  {Object} modules
  * @param  {Object} options
- * @param  {Array}  context
  * @return {Object}
  */
-function createModuleObject (path, modules, options, context = []) {
+function createModuleObject (path, options) {
+  const modules = {}
+
   for (const module of fs.readdirSync(path)) {
     if (options.ignore.includes(module)) {
       // ignore files from the ignore option
@@ -51,21 +50,40 @@ function createModuleObject (path, modules, options, context = []) {
 
     if (fs.lstatSync(join(path, module)).isDirectory()) {
       // create module object for folder
-      modules[module] = createModuleObject(
-        join(path, module),
-        {},
-        options,
-        context.concat(module)
-      )
-
+      modules[module] = createModuleObject(join(path, module), options)
       continue
     }
 
     if (options.include.includes(module.split('.').pop())) {
       // Load the module
-      modules[module.split('.')[0]] = require(join(path, module))
+      const moduleName = module.split('.')[0]
+
+      modules[moduleName] = require(join(path, module))
+
+      if (
+        typeof modules[moduleName] === 'object' &&
+        modules[moduleName].__esModule
+      ) {
+        modules[moduleName] = convertEsModuleToCommonJS(modules[moduleName])
+      }
     }
   }
 
   return modules
+}
+
+function convertEsModuleToCommonJS (esModule) {
+  if (esModule.default !== Object(esModule.default)) {
+    return esModule.default
+  }
+
+  const module = esModule.default
+
+  for (const key in esModule) {
+    if (!module[key] && key !== 'default') {
+      module[key] = esModule[key]
+    }
+  }
+
+  return module
 }

@@ -19,11 +19,20 @@ Object {
         ],
       },
     },
-    "module": true,
+    "module": [Function],
   },
 }
+`;
+
+exports[`Should only include json files 1`] = `
+Array [
+  "test",
+  "hello",
+]
 `;
 
 exports[`Should throw an exception if the path doesn't exist 1`] = `"The path ./does-not-exist does not exists"`;
 
 exports[`Should throw an exection if the first argument isn't a string 1`] = `"First argument should be a string"`;
+
+exports[`Should work width ES module 1`] = `[Function]`;
