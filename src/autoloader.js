@@ -83,10 +83,11 @@ function createModuleObject (path, options) {
  * @return {Boolean}
  */
 function ignorePath (path, ignore) {
-  return ignore.reduce(
-    (state, ignorePath) => state || path.includes(ignorePath.replace('./', '')),
-    false
-  )
+  for (const ignorePath of ignore) {
+    if (path.includes(ignorePath)) return true
+  }
+
+  return false
 }
 
 /**
