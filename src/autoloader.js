@@ -1,6 +1,10 @@
 import fs from 'fs'
 import { join } from 'path'
 
+/**
+ * Default options
+ * @type {Object}
+ */
 const defaultOptions = {
   ignore: ['node_modules'],
   include: ['js', 'json'],
@@ -22,10 +26,7 @@ export default function autoloader (path, options) {
     throw new Error(`The path ${path} does not exists`)
   }
 
-  return createModuleObject(
-    path,
-    Object.assign({}, defaultOptions, options)
-  )
+  return createModuleObject(path, Object.assign({}, defaultOptions, options))
 }
 
 /**
@@ -72,6 +73,11 @@ function createModuleObject (path, options) {
   return modules
 }
 
+/**
+ * Convert a ES Module to a Commonjs format
+ * @param  {Object} esModule
+ * @return {Mixed}
+ */
 function convertEsModuleToCommonJS (esModule) {
   if (esModule.default !== Object(esModule.default)) {
     return esModule.default
