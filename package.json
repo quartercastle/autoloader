@@ -1,7 +1,7 @@
 {
   "name": "@specla/autoloader",
   "description": "Autoload JavaScript or JSON files",
-  "version": "2.0.0-0",
+  "version": "2.0.0-1",
   "license": "MIT",
   "keywords": [
     "specla",
