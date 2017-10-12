@@ -47,6 +47,15 @@ test('ES Module should export primitive', () => {
   expect(modules.submodules.esModulePrimitive).toBe(true)
 })
 
+test(`Test return a flatten object if option.flatten is true`, () => {
+  const modules = autoloader(
+    path.resolve(__dirname, './modules'),
+    { flatten: true }
+  )
+
+  expect(modules).toMatchSnapshot()
+})
+
 test(`Should throw an exception if the path doesn't exist`, () => {
   expect(() => autoloader('./does-not-exist')).toThrowErrorMatchingSnapshot()
 })

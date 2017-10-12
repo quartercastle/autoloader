@@ -37,3 +37,18 @@ exports[`Should throw an exception if the path doesn't exist 1`] = `"The path ./
 exports[`Should throw an exection if the first argument isn't a string 1`] = `"First argument should be a string"`;
 
 exports[`Should work with ES module 1`] = `[Function]`;
+
+exports[`Test return a flatten object if option.flatten is true 1`] = `
+Object {
+  "file.key": "value",
+  "other-modules.test": Array [
+    "other module",
+  ],
+  "submodules.data.data.samples": Array [
+    "test",
+    "hello",
+  ],
+  "submodules.esModule": [Function],
+  "submodules.esModulePrimitive": true,
+}
+`;

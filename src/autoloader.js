@@ -73,7 +73,40 @@ function createModuleObject (path, options) {
     }
   }
 
+  if (options.flatten) {
+    const flattenModules = {}
+    flatten(flattenModules, modules)
+    return flattenModules
+  }
+
   return modules
+}
+
+/**
+ * Flatten autoloaded module object
+ * @param  {Object} flatten
+ * @param  {Object} module
+ * @param  {Array}  context
+ * @return {Object}
+ */
+function flatten (flatten, module, context = []) {
+  if (typeof module === 'object' && !Array.isArray(module)) {
+    return flattenObject(flatten, module, context)
+  }
+
+  return (flatten[context.join('.')] = module)
+}
+
+/**
+ * Flatten object within the autoloaded module object
+ * @param  {Object} module
+ * @param  {Array}  context
+ * @return {Object}
+ */
+function flattenObject (flattenObj, module, context) {
+  for (const key in module) {
+    flatten(flattenObj, module[key], context.concat(key))
+  }
 }
 
 /**
