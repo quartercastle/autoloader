@@ -43,25 +43,20 @@ function createModuleObject (path, options) {
       options.ignore.includes(module) ||
       ignorePath(join(path, module), options.ignore)
     ) {
-      // ignore files from the ignore option
       continue
     }
 
     if (module[0] === '.') {
-      // ignore hidden files and folders
       continue
     }
 
     if (fs.lstatSync(join(path, module)).isDirectory()) {
-      // create module object for folder
       modules[module] = createModuleObject(join(path, module), options)
       continue
     }
 
     if (options.include.includes(module.split('.').pop())) {
-      // Load the module
       const moduleName = module.split('.')[0]
-
       modules[moduleName] = require(join(path, module))
 
       if (
