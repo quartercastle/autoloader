@@ -43,6 +43,16 @@ const modules = {
 }
 ```
 
+The autoloader can also create a flat object with the `flatten` option.
+This will return the following object.
+```js
+const modules = {
+  'some-file': require('./modules/some-file.js'),
+  data: require('./modules/data.json'),
+  'sub-modules.other-file': require('./modules/sub-modules/other-file.js')
+}
+```
+
 ### Options
 ```js
 const modules = new Autoloader(__dirname, {
