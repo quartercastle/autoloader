@@ -19,8 +19,8 @@
   "bugs": {
     "url": "https://github.com/specla/autoloader/issues"
   },
-  "main": "lib/Autoloader.js",
-  "module": "src/Autoloader.js",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "files": [
     "lib",
     "dist",
